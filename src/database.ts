@@ -1,6 +1,6 @@
 import { createPool } from 'mysql2/promise';
 
-export const connect =async () => {
+export const connect = async () => {
 
     try {
         const connection = await createPool({
