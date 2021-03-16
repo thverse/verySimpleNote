@@ -1,11 +1,12 @@
 import { Router } from 'express';
 const router = Router();
-import { getPosts, createPosts } from '../controllers/postController';
+import { getPost, getPosts, createPost } from '../controllers/postController';
 
 router.route('/')
     .get(getPosts)
-    .post(createPosts)
+    .post(createPost)
 
-
+router.route('/:postId')
+    .get(getPost)
 
 export default router;
