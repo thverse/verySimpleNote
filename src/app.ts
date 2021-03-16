@@ -16,17 +16,17 @@ export class App {
 
     }
 
-    settings(){
+    private settings(){
          this.app.set('port', this.port || process.env.PORT || 1127);
     }
 
-    middlewares(){
+    private middlewares(){
         this.app.use(morgan('dev')); 
         this.app.use(express.json());
         
     }
 
-    initRoutes(){
+    private initRoutes(){
         this.app.use(IndexRoutes);
         this.app.use('/posts', PostsRoutes);
     }
