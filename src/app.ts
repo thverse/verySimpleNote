@@ -4,6 +4,7 @@ import IndexRoutes from './routes/indexRoutes';
 import PostsRoutes from './routes/postRoute';
 
 
+
 export class App {
 
     private app: Application;
@@ -13,7 +14,6 @@ export class App {
         this.settings();
         this.middlewares(); 
         this.initRoutes();
-
     }
 
     private settings(){
