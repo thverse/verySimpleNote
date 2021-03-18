@@ -1,5 +1,7 @@
 CREATE DATABASE vsn;
 
+use vsn;
+
 CREATE TABLE memo_list(
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(200) NOT NULL,
