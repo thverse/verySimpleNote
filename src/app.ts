@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import morgan from 'morgan';
 import IndexRoutes from './routes/indexRoutes';
-import PostsRoutes from './routes/postRoute';
+import MemoRoutes from './routes/memoRoute';
 
 
 
@@ -28,7 +28,7 @@ export class App {
 
     private initRoutes(){
         this.app.use(IndexRoutes);
-        this.app.use('/posts', PostsRoutes);
+        this.app.use('/posts', MemoRoutes);
     }
 
     async listen(){
