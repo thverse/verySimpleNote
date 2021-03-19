@@ -28,13 +28,13 @@ export class App {
 
     private initRoutes(){
         this.app.use(IndexRoutes);
-        this.app.use('/posts', MemoRoutes);
+        this.app.use('/memo', MemoRoutes);
     }
 
     async listen(){
          
         await this.app.listen (this.app.get('port'));
-        console.log(`Server on port ${this.app.get('port')}`)
+        console.log(`Server on port ${this.app.get('port')}`);
     }
 
 }

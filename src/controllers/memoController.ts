@@ -21,11 +21,21 @@ export const getMemo = async (req: Request, res: Response): Promise<Response> =>
 
 export const deleteMemo = async (req: Request, res: Response): Promise<Response> => {
 
+    let message = null;
+
     const conn = await connect();
     const memoId: string = req.body.memoId;
-    const result = await conn.query(`UPDATE memo_list SET deleted='Y' WHERE id=?`, [memoId]);
 
-    return res.json(result[0]);
+    try {
+        const result = await conn.query(`UPDATE memo_list SET deleted='Y' WHERE id=?`, [memoId]);
+        message = "SUCCESS CREATE MEMO!";
+        
+    } catch (error) {
+        message = error;
+        
+    }
+
+    return res.json({message : message});
 }
 
 export const createMemo = async (req: Request, res: Response): Promise<Response> => {
@@ -36,7 +46,7 @@ export const createMemo = async (req: Request, res: Response): Promise<Response>
 
     try {
         const result = await conn.query(`
-        INSERT INTO posts SET ?`, [newMemo]);
+        INSERT INTO memo_list SET ?`, [newMemo]);
         message = "SUCCESS CREATE MEMO!";
 
     } catch (error) {
@@ -51,3 +61,29 @@ export const createMemo = async (req: Request, res: Response): Promise<Response>
         message : message
     });
 }
+
+export const updateMemo = async (req: Request, res: Response): Promise<Response> => {
+    const newMemo: Memo = req.body;
+    const conn = await connect();
+
+    let message = null;
+
+    try {
+        const result = await conn.query(`
+        INSERT INTO memo_list SET ?`, [newMemo]);
+        message = "SUCCESS CREATE MEMO!";
+
+    } catch (error) {
+        
+        console.log('Error : ', error);
+        message = error;
+    }
+
+
+
+    return res.json({
+        message : message
+    });
+}
+
+
